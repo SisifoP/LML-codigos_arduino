@@ -1,0 +1,20 @@
+
+int salida = 0;   //establece la salida digital 0 para la conexion del lado positivo de la bocina
+
+int potenciometro = A0;   //establece la entrada analogia A0 para conectar la pata central del potenciometro. Las patas extremas van a 5V y GND respectivamente.
+float lectura; //va a generar los valores numericos que seran leidos desde el potenciometro
+int FreqMin = 400; //establece la frecuencia mas baja (cuando el potenciometro esta en 0)
+int FreqMax = 2000;   //establece la frecuencia mas alta (cuando el potenciometro esta al 100%)
+
+void setup () {
+  pinMode (salida, OUTPUT);   //activa el pin que se establecio como salida (el dig.0)
+  pinMode (potenciometro, INPUT); //activa el pin que se establecio como entrada (el analog.0)
+}
+
+void loop () {
+  lectura = analogRead(potenciometro);    //se asocia el float lectura con la lectura del potenciometro
+  float frecuencia = map(lectura, 0, 4003, FreqMin, FreqMax); //se mapean los valores minimo y maximo de la perilla
+  tone (salida, frecuencia);   //se puede agregar un valor de duracion en caso de que se quiera tener sonidos intermitentes
+  //delay (750);    //este delay se puede activar si se borran las diagonales del inicio de esta linea
+  
+}
