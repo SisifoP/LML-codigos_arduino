@@ -1,0 +1,23 @@
+int sonido = 13;
+
+//a continuacion, prepararemos nuestro arduino (la doble diagonal sirve para meter comentarios en el IDE de Arduino)
+
+void setup () {
+  //inicializa el pin digital como un output.
+  pinMode(sonido, OUTPUT);
+         //este led esta ya declarado como la salida 13 (eso se declara en la primera linea)  
+} 
+
+// para hacer correr el codigo
+void loop() {
+ 
+  for(int i=0; i < 100; i++) {  //esta instruccin sirve para generar un loop a partir del sonido que se establece
+  
+  digitalWrite(sonido, HIGH); //lado positivo de la onda
+  delayMicroseconds(900); //Tiempo de espera entre un impulso y el siguiente. Esto corresponde con la frecuencia, y por ello cambia el tono del sonido. Sin embargo, la relacion es inversamente proporcional con la cantidad de ciclos por segundo
+  digitalWrite(sonido, LOW); //lado negativo de la onda
+  delayMicroseconds(900); 
+}
+}
+  
+ 
